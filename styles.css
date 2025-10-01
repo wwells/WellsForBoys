@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #2d2d2d;
+    --accent-color: #4a9eff;
+    --text-color: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #404040;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4a9eff 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-color);
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    flex: 1;
+}
+
+/* Video Section */
+.video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem 0;
+}
+
+.video-wrapper {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Release Page */
+.release-page {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.album-artwork {
+    position: sticky;
+    top: 100px;
+}
+
+.album-artwork img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 1;
+    object-fit: cover;
+    background: var(--secondary-color);
+}
+
+.album-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.album-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.artist-name {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.album-bio {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.streaming-links h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.platform-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.platform-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+    border-color: var(--accent-color);
+}
+
+.platform-icon {
+    font-size: 1.5rem;
+}
+
+/* Platform-specific colors */
+.platform-link.spotify:hover {
+    border-color: #1DB954;
+    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.platform-link.apple:hover {
+    border-color: #FC3C44;
+    box-shadow: 0 4px 12px rgba(252, 60, 68, 0.3);
+}
+
+.platform-link.youtube:hover {
+    border-color: #FF0000;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.platform-link.bandcamp:hover {
+    border-color: #629aa9;
+    box-shadow: 0 4px 12px rgba(98, 154, 169, 0.3);
+}
+
+/* Footer */
+footer {
+    background: var(--secondary-color);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .release-page {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .album-artwork {
+        position: static;
+    }
+
+    .album-title {
+        font-size: 2rem;
+    }
+
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .album-title {
+        font-size: 1.75rem;
+    }
+
+    .artist-name {
+        font-size: 1.25rem;
+    }
+}
+
