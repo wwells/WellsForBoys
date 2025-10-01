@@ -95,6 +95,7 @@ body {
     align-items: center;
     min-height: 60vh;
     padding: 2rem 0;
+    margin-bottom: 4rem;
 }
 
 .video-wrapper {
@@ -112,8 +113,126 @@ body {
     display: block;
 }
 
-/* Release Page */
-.release-page {
+/* Artist Bio Section */
+.artist-bio-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 3rem;
+    background: rgba(45, 45, 45, 0.5);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.artist-image {
+    position: relative;
+}
+
+.artist-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.artist-bio-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #4a9eff 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.artist-bio-content p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.artist-bio-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Releases Gallery */
+.releases-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #4a9eff 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.album-card {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.album-card:hover {
+    transform: translateY(-8px);
+}
+
+.album-card-artwork {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    background: var(--secondary-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.album-card:hover .album-card-artwork {
+    box-shadow: 0 20px 60px rgba(74, 158, 255, 0.4);
+}
+
+.album-card-artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.album-card-info {
+    padding: 0 0.5rem;
+}
+
+.album-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.album-card-year {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Individual Album Page */
+.album-page {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 3rem;
@@ -152,10 +271,54 @@ body {
     font-weight: 500;
 }
 
+.album-year {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-top: -1rem;
+}
+
 .album-bio {
     line-height: 1.8;
     color: var(--text-secondary);
     font-size: 1.1rem;
+}
+
+.track-list {
+    margin-top: 1rem;
+}
+
+.track-list h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.track-list ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+    line-height: 2;
+    color: var(--text-color);
+}
+
+.track-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.track-list li:last-child {
+    border-bottom: none;
+}
+
+.track-duration {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
 }
 
 .streaming-links h3 {
@@ -193,14 +356,24 @@ body {
     border-color: var(--accent-color);
 }
 
-.platform-icon {
+.platform-link i {
     font-size: 1.5rem;
+    min-width: 24px;
+    text-align: center;
 }
 
 /* Platform-specific colors */
+.platform-link.spotify i {
+    color: #1DB954;
+}
+
 .platform-link.spotify:hover {
     border-color: #1DB954;
     box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.platform-link.apple i {
+    color: #FC3C44;
 }
 
 .platform-link.apple:hover {
@@ -208,14 +381,87 @@ body {
     box-shadow: 0 4px 12px rgba(252, 60, 68, 0.3);
 }
 
+.platform-link.youtube i {
+    color: #FF0000;
+}
+
 .platform-link.youtube:hover {
     border-color: #FF0000;
     box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
 }
 
+.platform-link.tidal i {
+    color: #00FFFF;
+}
+
+.platform-link.tidal:hover {
+    border-color: #00FFFF;
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
+}
+
+.platform-link.soundcloud i {
+    color: #FF8800;
+}
+
+.platform-link.soundcloud:hover {
+    border-color: #FF8800;
+    box-shadow: 0 4px 12px rgba(255, 136, 0, 0.3);
+}
+
+.platform-link.amazon-music i,
+.platform-link.amazon-buy i {
+    color: #FF9900;
+}
+
+.platform-link.amazon-music:hover,
+.platform-link.amazon-buy:hover {
+    border-color: #FF9900;
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+
+.platform-link.deezer i {
+    color: #FF0092;
+}
+
+.platform-link.deezer:hover {
+    border-color: #FF0092;
+    box-shadow: 0 4px 12px rgba(255, 0, 146, 0.3);
+}
+
+.platform-link.bandcamp i {
+    color: #629aa9;
+}
+
 .platform-link.bandcamp:hover {
     border-color: #629aa9;
     box-shadow: 0 4px 12px rgba(98, 154, 169, 0.3);
+}
+
+.platform-link.iheartradio i {
+    color: #C6002B;
+}
+
+.platform-link.iheartradio:hover {
+    border-color: #C6002B;
+    box-shadow: 0 4px 12px rgba(198, 0, 43, 0.3);
+}
+
+.platform-link.boomplay i {
+    color: #00D9A3;
+}
+
+.platform-link.boomplay:hover {
+    border-color: #00D9A3;
+    box-shadow: 0 4px 12px rgba(0, 217, 163, 0.3);
+}
+
+.platform-link.itunes i {
+    color: #FB5BC5;
+}
+
+.platform-link.itunes:hover {
+    border-color: #FB5BC5;
+    box-shadow: 0 4px 12px rgba(251, 91, 197, 0.3);
 }
 
 /* Footer */
@@ -238,7 +484,7 @@ footer {
         gap: 1rem;
     }
 
-    .release-page {
+    .album-page {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
@@ -247,12 +493,31 @@ footer {
         position: static;
     }
 
+    .page-title {
+        font-size: 2rem;
+    }
+
     .album-title {
         font-size: 2rem;
     }
 
+    .albums-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
     .links-grid {
         grid-template-columns: 1fr;
+    }
+
+    .artist-bio-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .artist-bio-content h2 {
+        font-size: 2rem;
     }
 }
 
@@ -265,12 +530,37 @@ footer {
         padding: 0 1rem;
     }
 
+    .page-title {
+        font-size: 1.75rem;
+    }
+
     .album-title {
         font-size: 1.75rem;
     }
 
     .artist-name {
         font-size: 1.25rem;
+    }
+
+    .albums-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .album-card-title {
+        font-size: 1.25rem;
+    }
+
+    .artist-bio-section {
+        padding: 1.5rem;
+        margin: 2rem auto;
+    }
+
+    .artist-bio-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .artist-bio-content p {
+        font-size: 1rem;
     }
 }
 
